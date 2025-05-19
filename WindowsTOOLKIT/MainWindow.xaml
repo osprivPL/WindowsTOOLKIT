@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsTOOLKIT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Windows TOOLKIT" Height="600" Width="800">
+
     <Grid>
-        
+        <!-- Definicja wierszy (wysokości) -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            
+        </Grid.RowDefinitions>
+
+        <!-- Definicja kolumn (szerokości) -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            
+            
+        </Grid.ColumnDefinitions>
+        <!--<Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="LightBlue" BorderBrush="Black" BorderThickness="2" Margin="0,0,0,108">-->
+            <Image Source="assets/mmc.png" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <!--</Border>-->
+        <Button Grid.Column="2" Grid.ColumnSpan="2" Height="120" Margin="10" FontSize="16" FontFamily="Comic Sans MS">
+            <TextBlock Text="Zainstaluj program bez uprawnień administratora" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
+            </Button>
+
     </Grid>
+
+    
 </Window>

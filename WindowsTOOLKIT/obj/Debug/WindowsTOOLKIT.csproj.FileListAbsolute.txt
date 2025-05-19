@@ -1,0 +1,15 @@
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\WindowsTOOLKIT.exe.config
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\WindowsTOOLKIT.exe
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\WindowsTOOLKIT.pdb
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.csproj.AssemblyReference.cache
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\MainWindow.g.cs
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\App.g.cs
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT_MarkupCompile.cache
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT_MarkupCompile.lref
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\MainWindow.baml
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.g.resources
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.Properties.Resources.resources
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.csproj.GenerateResource.cache
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.csproj.CoreCompileInputs.cache
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.exe
+C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.pdb
