@@ -24,5 +24,12 @@ namespace WindowsTOOLKIT
         {
             InitializeComponent();
         }
+
+        private void btnWindowsFeatures_Click(object sender, RoutedEventArgs e)
+        {
+            WindowsFeatures window = new WindowsFeatures();
+            window.ShowDialog();
+            
+        }
     }
 }

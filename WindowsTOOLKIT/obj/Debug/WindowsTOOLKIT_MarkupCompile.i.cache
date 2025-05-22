@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\
 WindowsTOOLKIT
 none
 false
 DEBUG;TRACE
-C:\Users\Programista_2\Documents\2tp2\C#\osprivPL\WindowsTOOLKIT\WindowsTOOLKIT\App.xaml
-21821296399
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\App.xaml
+21553802345
 
-7813392744
+7411900350
 13-38814620
-InstallWithoutAdminPrivilages.xaml;MainWindow.xaml;
+MainWindow.xaml;WindowsFeatures.xaml;
 
 True
 
