@@ -7,5 +7,33 @@
         mc:Ignorable="d"
         Title="WindowsFeatures" Height="450" Width="800"
         x:Name="winWindowsFeatures" Loaded="winWindowsFeatures_Loaded">
-    <StackPanel></StackPanel>
+
+    <Grid>
+        <!-- Układ z dwiema wierszami -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Przewijalna część -->
+            <RowDefinition Height="Auto" />
+            <!-- Przyciski -->
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="GFeatures">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ScrollViewer>
+
+        <Grid Grid.Row="1" x:Name="bottomDiv" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Powrót" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0"/>
+            <Button Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1"/>
+        </Grid>
+    </Grid>
 </Window>

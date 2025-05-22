@@ -22,8 +22,6 @@ namespace WindowsTOOLKIT
     {
         public WindowsFeatures()
         {
-            
-
             InitializeComponent();
         }
 
@@ -51,6 +49,8 @@ namespace WindowsTOOLKIT
 
             
 
+            
+
             foreach (var line in lines)
             {
                 if (!(line.StartsWith("Feature Name") || line.StartsWith("---") || line == "The operation completed successfully.") && show)
@@ -69,9 +69,35 @@ namespace WindowsTOOLKIT
                 }
             }
 
+            features = features.OrderBy(feature => feature.Name).ToList();
+            int row = 0;
+
             foreach (var feature in features)
             {
-                MessageBox.Show($"Feature: {feature.Name}, State: {feature.State}");
+                GFeatures.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+                var label = new Label
+                {
+                    Content = feature.Name,
+                    Margin = new Thickness(5)
+                };
+
+                var checkbox = new CheckBox
+                {
+                    IsChecked = feature.State == "Enabled",
+                    Margin = new Thickness(5)
+                };
+
+                Grid.SetRow(label, row);
+                Grid.SetColumn(label, 0);
+
+                Grid.SetRow(checkbox, row);
+                Grid.SetColumn(checkbox, 1);
+
+                GFeatures.Children.Add(label);
+                GFeatures.Children.Add(checkbox);
+
+                row++;
             }
         }
 
