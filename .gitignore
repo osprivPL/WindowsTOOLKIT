@@ -15,6 +15,10 @@
 x64/
 x86/
 .vs/
+WindowsTOOLKIT/obj/
+WindowsTOOLKIT/.vs/
+WindowsTOOLKIT/bin/
+WindowsTOOLKIT/Properties/
 .idea/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
