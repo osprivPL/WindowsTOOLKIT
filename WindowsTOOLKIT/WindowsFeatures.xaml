@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WindowsTOOLKIT"
         mc:Ignorable="d"
         Title="WindowsFeatures" Height="450" Width="800"
-        x:Name="winWindowsFeatures" Loaded="winWindowsFeatures_Loaded">
+        x:Name="winWindowsFeatures" Loaded="winWindowsFeatures_Loaded"
+        Closed="winWindowsFeatures_Closed">
 
     <Grid>
         <!-- Układ z dwiema wierszami -->

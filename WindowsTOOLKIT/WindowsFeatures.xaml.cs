@@ -13,6 +13,8 @@ namespace WindowsTOOLKIT
         private List<(string Name, string State)>
             _featuresBefore = new List<(string Name, string State)>(); // stan funkcji po pobrnaiu DISMEM
 
+        private bool closedByProgram = true;
+
         public WindowsFeatures()
         {
             InitializeComponent();
@@ -124,6 +126,7 @@ namespace WindowsTOOLKIT
 
         private async void WFBTNSave_click(object sender, RoutedEventArgs e)
         {
+            closedByProgram = false;
             WFBTNsave.IsEnabled = false;
             WFBTNback.IsEnabled = false;
             var lblIndex = _featuresBefore.Count - 1;
@@ -183,13 +186,27 @@ namespace WindowsTOOLKIT
                                                 ? "enable-feature"
                                                 : "disable-feature") +
                                             " /NoRestart /featurename:" + featuresAfter[i].Name,
-                                RedirectStandardOutput = true,
+                                RedirectStandardOutput = false,
                                 UseShellExecute = false,
                                 CreateNoWindow = true
                             }
                         };
                         proc.Start();
-                        proc.WaitForExit();
+                        bool finished = proc.WaitForExit(1 * 60 * 1000); // 5 minut na wykonanie
+
+                        if (!finished)
+                        {
+                            proc.Kill();
+                            Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                this.Topmost = true;
+                                this.Activate();
+                                MessageBox.Show("Błąd: Funkcja " + featuresAfter[i].Name +
+                                                " nie została zmieniona. Zrestartuj komputer, i spróbuj ponownie");
+                                this.Topmost = false;
+                                
+                            });
+                        }
                     });
                 }
             }
@@ -197,8 +214,19 @@ namespace WindowsTOOLKIT
             this.Topmost = true;
             this.Activate();
             MessageBox.Show("Zapisano zmiany. Zrestartuj komputer, aby zmiany zostały zastosowane");
+            closedByProgram = true;
             this.Topmost = false;
             this.Close();
+        }
+
+        private void winWindowsFeatures_Closed(object sender, EventArgs e)
+        {
+            if (!closedByProgram)
+            {
+                closedByProgram = false;
+                MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");    
+            }
+            
         }
     }
 }
