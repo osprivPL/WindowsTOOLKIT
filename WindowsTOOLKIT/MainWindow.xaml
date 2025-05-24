@@ -28,10 +28,13 @@
 
         </Grid.ColumnDefinitions>
         <!--<Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="LightBlue" BorderBrush="Black" BorderThickness="2" Margin="0,0,0,108">-->
-        <Image Source="assets/mmc.png" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Image Source="assets/mmc.png" Margin="20,0,0,0" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
         <!--</Border>-->
         <Button x:Name="btnWindowsFeatures" Grid.Column="2" Grid.ColumnSpan="2" Height="120" Margin="10" FontSize="16" FontFamily="Comic Sans MS" Click="btnWindowsFeatures_Click">
             <TextBlock Text="Zarządzaj funkcjami systemu" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
+        </Button>
+        <Button x:Name="btnPersonalisation" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"  Height="120" Margin="10" FontSize="16" FontFamily="Comic Sans MS" Click="btnPersonalisation_Click">
+            <TextBlock Text="Personalizacja" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
         </Button>
 
     </Grid>

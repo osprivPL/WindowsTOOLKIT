@@ -29,7 +29,12 @@ namespace WindowsTOOLKIT
         {
             WindowsFeatures window = new WindowsFeatures();
             window.ShowDialog();
-            
+        }
+        
+        private void btnPersonalisation_Click(object sender, RoutedEventArgs e)
+        {
+            Personalisation window = new Personalisation();
+            window.ShowDialog();
         }
     }
 }

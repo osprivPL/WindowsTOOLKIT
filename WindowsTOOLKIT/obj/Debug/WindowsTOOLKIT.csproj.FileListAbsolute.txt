@@ -30,3 +30,5 @@ C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.pd
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsFeatures.g.cs
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT_MarkupCompile.lref
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsFeatures.baml
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Personalisation.g.cs
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Personalisation.baml
