@@ -44,6 +44,8 @@ namespace WindowsTOOLKIT
                     "SettingsPageVisibility"), "REG_SZ")
             };
 
+        List<bool> cbBefore = new List<bool>();
+
 
         public Personalisation()
         {
@@ -57,17 +59,13 @@ namespace WindowsTOOLKIT
             {
                 if (elem is CheckBox cb)
                 {
-                    if (index == 8)
-                    {
-                        index = index;
-                    }
                     string output = "";
                     Process proc;
                     // string parts[] = null;
                     string[] parts;
                     if (cb.Name == "CbHidden")
                     {
-                        int[] values = new int[2] {-1,-1};
+                        int[] values = new int[2] { -1, -1 };
                         for (int i = 0; i < 2; i++)
                         {
                             proc = new Process
@@ -96,14 +94,14 @@ namespace WindowsTOOLKIT
                         }
                         else
                         {
-                            cb.IsChecked = false; 
+                            cb.IsChecked = false;
                         }
 
                         if (values[0] + values[1] > 0)
                         {
+                            cbBefore.Add(cb.IsChecked == true);
                             continue;
                         }
-                        
                     }
                     else
                     {
@@ -163,6 +161,8 @@ namespace WindowsTOOLKIT
                         cb.IsChecked = false;
                     }
 
+                    cbBefore.Add(cb.IsChecked == true);
+
 
                     index++;
                 }
@@ -173,6 +173,43 @@ namespace WindowsTOOLKIT
         private void BtnBack_click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void BtnSave_click(object sender, RoutedEventArgs e)
+        {
+            int index = 0;
+            foreach (var elem in GPersonalisation.Children)
+            {
+                if (elem is CheckBox cb)
+                {
+                    bool state = cb.IsChecked == true;
+                    if (state != cbBefore[index])
+                    {
+                        if (cb.Name == "CbHidden")
+                        {
+                            for (int i = 0; i < 2; i++)
+                            {
+                                Process proc = new Process
+                                {
+                                    StartInfo = new ProcessStartInfo
+                                    {
+                                        FileName = "reg",
+                                        Arguments =
+                                            $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d" +
+                                            (state ? "1" : "0") + " /f",
+                                        RedirectStandardOutput = false,
+                                        UseShellExecute = false,
+                                        CreateNoWindow = true
+                                    }
+                                };
+                                proc.Start();
+                                proc.WaitForExit();
+                                index++;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

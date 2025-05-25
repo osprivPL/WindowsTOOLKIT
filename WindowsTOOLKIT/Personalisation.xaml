@@ -80,7 +80,7 @@
             </Grid.ColumnDefinitions>
 
             <Button x:Name="BtnBack" Content="Powrót" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Click="BtnBack_click"/>
-            <Button x:Name="BtnSave" Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1" />
+            <Button x:Name="BtnSave" Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1" Click="BtnSave_click"/>
         </Grid>
     </Grid>
 </Window>
