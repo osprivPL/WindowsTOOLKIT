@@ -159,8 +159,8 @@ namespace WindowsTOOLKIT
                                 StartInfo = new ProcessStartInfo
                                 {
                                     FileName = "reg",
-                                    Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " 
-                                                + (Keys[index].Item2 == "REG_DWORD" ? "0" : "") + " /f",
+                                    Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
+                                                (Keys[index].Item2 == "REG_DWORD" ? "0" : "\"\"") + " /f",
                                     RedirectStandardOutput = true,
                                     UseShellExecute = false,
                                     CreateNoWindow = true
