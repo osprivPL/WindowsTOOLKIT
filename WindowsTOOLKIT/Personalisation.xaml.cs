@@ -66,27 +66,52 @@ namespace WindowsTOOLKIT
                     if (cb.Name == "CbHidden")
                     {
                         int[] values = new int[2] { -1, -1 };
-                        for (int i = 0; i < 2; i++)
+                        try
                         {
-                            proc = new Process
+                            for (int i = 0; i < 2; i++)
                             {
-                                StartInfo = new ProcessStartInfo
+                                proc = new Process
                                 {
-                                    FileName = "reg",
-                                    Arguments = $"query \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\"",
-                                    RedirectStandardOutput = true,
-                                    UseShellExecute = false,
-                                    CreateNoWindow = true
-                                }
-                            };
-                            proc.Start();
-                            output = proc.StandardOutput.ReadToEnd();
-                            proc.WaitForExit();
-                            parts = output.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                            values[i] = int.Parse(parts[parts.Length - 1][2].ToString());
-                            // MessageBox.Show(cb.Name+ ": " + parts[parts.Length - 1]);
-                            index++;
+                                    StartInfo = new ProcessStartInfo
+                                    {
+                                        FileName = "reg",
+                                        Arguments =
+                                            $"query \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\"",
+                                        RedirectStandardOutput = true,
+                                        UseShellExecute = false,
+                                        CreateNoWindow = true
+                                    }
+                                };
+                                proc.Start();
+                                output = proc.StandardOutput.ReadToEnd();
+                                proc.WaitForExit();
+                                parts = output.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                                values[i] = int.Parse(parts[parts.Length - 1][2].ToString());
+                                // MessageBox.Show(cb.Name+ ": " + parts[parts.Length - 1]);
+                                index++;
+                            }
                         }
+                        catch (Exception)
+                        {
+                            for (int i = 0; i < 2; i++)
+                            {
+                                proc = new Process
+                                {
+                                    StartInfo = new ProcessStartInfo
+                                    {
+                                        FileName = "reg",
+                                        Arguments =
+                                            $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d 0 /f",
+                                        RedirectStandardOutput = true,
+                                        UseShellExecute = false,
+                                        CreateNoWindow = true
+                                    }
+                                };
+                                proc.Start();
+                                proc.WaitForExit();
+                            }
+                        }
+
 
                         if (values[0] == 1 && values[1] == 1)
                         {
@@ -105,38 +130,40 @@ namespace WindowsTOOLKIT
                     }
                     else
                     {
-                        proc = new Process
+                        try
                         {
-                            StartInfo = new ProcessStartInfo
+                            proc = new Process
                             {
-                                FileName = "reg",
-                                Arguments = $"query \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\"",
-                                RedirectStandardOutput = true,
-                                UseShellExecute = false,
-                                CreateNoWindow = true
-                            }
-                        };
-                        proc.Start();
-                        output = proc.StandardOutput.ReadToEnd();
-                        proc.WaitForExit();
-                    }
-
-                    if (output == "ERROR: The system was unable to find the specified registry key or value.")
-                    {
-                        proc = new Process
+                                StartInfo = new ProcessStartInfo
+                                {
+                                    FileName = "reg",
+                                    Arguments = $"query \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\"",
+                                    RedirectStandardOutput = true,
+                                    UseShellExecute = false,
+                                    CreateNoWindow = true
+                                }
+                            };
+                            proc.Start();
+                            output = proc.StandardOutput.ReadToEnd();
+                            proc.WaitForExit();
+                        }
+                        catch (Exception)
                         {
-                            StartInfo = new ProcessStartInfo
+                            proc = new Process
                             {
-                                FileName = "reg",
-                                Arguments =
-                                    $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /f",
-                                RedirectStandardOutput = false,
-                                UseShellExecute = false,
-                                CreateNoWindow = true
-                            }
-                        };
-                        proc.Start();
-                        proc.WaitForExit();
+                                StartInfo = new ProcessStartInfo
+                                {
+                                    FileName = "reg",
+                                    Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d 0 /f",
+                                    RedirectStandardOutput = true,
+                                    UseShellExecute = false,
+                                    CreateNoWindow = true
+                                }
+                            };
+                            proc.Start();
+                            output = proc.StandardOutput.ReadToEnd();
+                            proc.WaitForExit();
+                        }
                     }
 
                     parts = output.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
