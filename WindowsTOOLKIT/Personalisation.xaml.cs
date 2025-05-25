@@ -15,30 +15,30 @@ namespace WindowsTOOLKIT
             new List<((string Key, string valueName)registry, string type)>
             {
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme"),
-                    "dword"),
+                    "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme"),
-                    "dword"),
+                    "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowTaskViewButton"),
-                    "dword"),
+                    "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search", "SearchboxTaskbarMode"),
-                    "dword"),
+                    "REG_DWORD"),
                 ((@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", "VerboseStatus"),
-                    "dword"),
+                    "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager",
-                    "SystemPaneSuggestionsEnabled"), "dword"),
+                    "SystemPaneSuggestionsEnabled"), "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced",
-                    "ShowSecondsInSystemClock"), "dword"),
+                    "ShowSecondsInSystemClock"), "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Control Panel\Mouse", "MouseSpeed"), "REG_SZ"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "HideFileExt"),
-                    "dword"),
-                ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Hidden"), "dword"),
+                    "REG_DWORD"),
+                ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Hidden"), "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowSuperHidden"),
-                    "dword"),
+                    "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarAl"),
-                    "dword"),
+                    "REG_DWORD"),
                 ((
                     @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings",
-                    "TaskbarEndTask"), "dword"),
+                    "TaskbarEndTask"), "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search", "BingSearchEnabled"), "dword"),
                 ((@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer",
                     "SettingsPageVisibility"), "REG_SZ")
@@ -146,6 +146,11 @@ namespace WindowsTOOLKIT
                             proc.Start();
                             output = proc.StandardOutput.ReadToEnd();
                             proc.WaitForExit();
+
+                            if (output == "ERROR: The system was unable to find the specified registry key or value.")
+                            {
+                                throw new Exception();
+                            }
                         }
                         catch (Exception)
                         {
@@ -154,7 +159,8 @@ namespace WindowsTOOLKIT
                                 StartInfo = new ProcessStartInfo
                                 {
                                     FileName = "reg",
-                                    Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d 0 /f",
+                                    Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " 
+                                                + (Keys[index].Item2 == "REG_DWORD" ? "0" : "") + " /f",
                                     RedirectStandardOutput = true,
                                     UseShellExecute = false,
                                     CreateNoWindow = true
