@@ -12,7 +12,7 @@ namespace WindowsTOOLKIT
     public partial class Personalisation : Window
     {
         private static readonly List<((string, string), string)> Keys =
-            new List<((string Key, string valueName)registry, string type)>
+            new List<((string Key, string valueName) registry, string type)>
             {
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme"),
                     "REG_DWORD"),
@@ -40,7 +40,7 @@ namespace WindowsTOOLKIT
                     @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings",
                     "TaskbarEndTask"), "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search", "BingSearchEnabled"), "dword"),
-                ((@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer",
+                ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer",
                     "SettingsPageVisibility"), "REG_SZ")
             };
 
@@ -63,6 +63,10 @@ namespace WindowsTOOLKIT
                     Process proc;
                     // string parts[] = null;
                     string[] parts;
+                    if (cb.Name == "CbHomePage")
+                    {
+                        index = index;
+                    }
                     if (cb.Name == "CbHidden")
                     {
                         int[] values = new int[2] { -1, -1 };
@@ -147,7 +151,7 @@ namespace WindowsTOOLKIT
                             output = proc.StandardOutput.ReadToEnd();
                             proc.WaitForExit();
 
-                            if (output == "ERROR: The system was unable to find the specified registry key or value.")
+                            if (output == "ERROR: The system was unable to find the specified registry key or value." || output == "\r\n\r\n")
                             {
                                 throw new Exception();
                             }
@@ -215,6 +219,10 @@ namespace WindowsTOOLKIT
             {
                 if (elem is CheckBox cb)
                 {
+                    if (cb.Name == "CbTaskbarAlign")
+                    {
+                        index = index;
+                    }
                     bool state = cb.IsChecked == true;
                     if (state != cbBefore[index])
                     {
@@ -240,8 +248,34 @@ namespace WindowsTOOLKIT
                                 index++;
                             }
                         }
+
+                        else
+                        {
+                            string args = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
+                                                (state ? "1" : "0") + " /f";
+                            Process proc = new Process
+                            {
+                                StartInfo = new ProcessStartInfo
+                                {
+                                    FileName = "reg",
+                                    Arguments =args,
+                                    RedirectStandardOutput = false,
+                                    UseShellExecute = false,
+                                    CreateNoWindow = true
+                                }
+                            };
+                            proc.Start();
+                            proc.WaitForExit();
+                        }
                     }
+                    else if (cb.Name == "CbHidden")
+                    {
+                        index++;
+                    }
+                    index++;
+
                 }
+                
             }
         }
     }
