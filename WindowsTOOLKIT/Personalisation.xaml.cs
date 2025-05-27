@@ -154,13 +154,19 @@ namespace WindowsTOOLKIT
                 cbAfter.Add(null);
             }
 
-            // kasuje elementy, i laczy Labele z checkboxami
             for (int i = GPersonalisation.Children.Count - 1; i >= 0; i--)
             {
                 var elem = GPersonalisation.Children[i];
+                
+                if (!(elem is CheckBox) && !(elem is Label) )
+                {
+                    continue;
+                }
+
                 if (elem is CheckBox cb)
                 {
                     cbAfter[cbIndex] = cb.IsChecked == true;
+                    cbIndex--;
                 }
 
                 GPersonalisation.Children.Remove(elem);
