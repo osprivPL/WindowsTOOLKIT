@@ -43,7 +43,8 @@ namespace WindowsTOOLKIT
                     "SettingsPageVisibility"), "REG_SZ")
             };
 
-        List<bool> cbBefore = new List<bool>();
+        List<bool?> cbBefore = new List<bool?>();
+        bool closedByProgram = false;
 
 
         public Personalisation()
@@ -142,8 +143,30 @@ namespace WindowsTOOLKIT
             this.Close();
         }
 
-        private void BtnSave_click(object sender, RoutedEventArgs e)
+        private async void BtnSave_click(object sender, RoutedEventArgs e)
         {
+            var cbIndex = cbBefore.Count - 1;
+            List<bool?> cbAfter = new List<bool?>();
+
+            // Przygotowanie listy do porownania nowego stanu z poprzednim
+            for (int i = 0; i < cbBefore.Count; i++)
+            {
+                cbAfter.Add(null);
+            }
+
+            // kasuje elementy, i laczy Labele z checkboxami
+            for (int i = GPersonalisation.Children.Count - 1; i >= 0; i--)
+            {
+                var elem = GPersonalisation.Children[i];
+                if (elem is CheckBox cb)
+                {
+                    cbAfter[cbIndex] = cb.IsChecked == true;
+                }
+
+                GPersonalisation.Children.Remove(elem);
+            }
+
+
             int index = 0;
             foreach (var elem in GPersonalisation.Children)
             {
@@ -157,28 +180,42 @@ namespace WindowsTOOLKIT
                     bool state = cb.IsChecked == true;
                     if (state != cbBefore[index])
                     {
-
-                        string args =
-                            $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
-                            (state ? "1" : "0") + " /f";
-                        Process proc = new Process
+                        await Task.Run(() =>
                         {
-                            StartInfo = new ProcessStartInfo
+                            Process proc = new Process
                             {
-                                FileName = "reg",
-                                Arguments = args,
-                                RedirectStandardOutput = false,
-                                UseShellExecute = false,
-                                CreateNoWindow = true
-                            }
-                        };
-                        proc.Start();
-                        proc.WaitForExit();
+                                StartInfo = new ProcessStartInfo
+                                {
+                                    FileName = "reg",
+                                    Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
+                                    (state ? "1" : "0") + " /f",
+                                    RedirectStandardOutput = false,
+                                    UseShellExecute = false,
+                                    CreateNoWindow = true
+                                }
+                            };
+                            proc.Start();
+                            proc.WaitForExit();
+                        });
                     }
                     
 
                     index++;
                 }
+            }
+            this.Topmost = true;
+            this.Activate();
+            MessageBox.Show("Zapisano zmiany. Zrestartuj komputer, aby zmiany zostały zastosowane");
+            closedByProgram = true;
+            this.Topmost = false;
+            this.Close();
+        }
+        private void WPersonalisation_Closed(object sender, EventArgs e)
+        {
+            if (!closedByProgram)
+            {
+                closedByProgram = false;
+                MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");
             }
         }
     }
