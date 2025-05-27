@@ -168,17 +168,15 @@ namespace WindowsTOOLKIT
 
 
             int index = 0;
-            foreach (var elem in GPersonalisation.Children)
+            foreach (var elem in cbAfter )
             {
-                if (elem is CheckBox cb)
-                {
-                    if (cb.Name == "CbTaskbarAlign")
-                    {
-                        index = index;
-                    }
+                
+                    //if (cb.Name == "CbTaskbarAlign")
+                    //{
+                    //    index = index;
+                    //}
 
-                    bool state = cb.IsChecked == true;
-                    if (state != cbBefore[index])
+                    if (cbAfter[index] != cbBefore[index])
                     {
                         await Task.Run(() =>
                         {
@@ -188,7 +186,7 @@ namespace WindowsTOOLKIT
                                 {
                                     FileName = "reg",
                                     Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
-                                    (state ? "1" : "0") + " /f",
+                                    ((bool)cbAfter[index] ? "1" : "0") + " /f",
                                     RedirectStandardOutput = false,
                                     UseShellExecute = false,
                                     CreateNoWindow = true
@@ -201,7 +199,7 @@ namespace WindowsTOOLKIT
                     
 
                     index++;
-                }
+
             }
             this.Topmost = true;
             this.Activate();
