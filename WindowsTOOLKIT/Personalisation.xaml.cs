@@ -174,12 +174,21 @@ namespace WindowsTOOLKIT
 
 
             int index = 0;
+            Label current = new Label
+            {
+                Content = "",
+                Margin = new Thickness(5)
+            };
+            GPersonalisation.Children.Add(current);
             foreach (var elem in cbAfter)
             {
                 if (cbAfter[index] != cbBefore[index])
                 {
+                    current.Content = "Dostosowywanie systemu";
                     if (index == 13)
                     {
+                        //string args = 
+                        //MessageBox.Show(args);
                         await Task.Run(() =>
                         {
                             Process proc = new Process
@@ -188,15 +197,19 @@ namespace WindowsTOOLKIT
                                 {
                                     FileName = "reg",
                                     Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
-                                                ((bool)cbAfter[index] ? "hide: home" : "") + " /f",
+                                                ((bool)cbAfter[index] ? " " : "\"hide: home\"") + " /f",
                                     RedirectStandardOutput = false,
                                     UseShellExecute = false,
                                     CreateNoWindow = true
                                 }
                             };
+                           
                             proc.Start();
+                            //string temp = proc.StandardOutput.ReadToEnd();
+                            //MessageBox.Show(temp);
                             proc.WaitForExit();
                         });
+                        // MessageBox.Show(output);
                     }
                     else
                     {
@@ -222,6 +235,23 @@ namespace WindowsTOOLKIT
                 }
                 index++;
             }
+
+            current.Content = "Restartowanie explorer.exe";
+
+            await Task.Run(() =>
+            {
+                Process proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = "/c taskill /f /im explorer.exe & start explorer.exe",
+                        RedirectStandardOutput = false,
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }
+                };
+            });
 
             this.Topmost = true;
             this.Activate();
