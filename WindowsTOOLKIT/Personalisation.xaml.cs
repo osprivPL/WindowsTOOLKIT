@@ -157,8 +157,8 @@ namespace WindowsTOOLKIT
             for (int i = GPersonalisation.Children.Count - 1; i >= 0; i--)
             {
                 var elem = GPersonalisation.Children[i];
-                
-                if (!(elem is CheckBox) && !(elem is Label) )
+
+                if (!(elem is CheckBox) && !(elem is Label))
                 {
                     continue;
                 }
@@ -174,15 +174,11 @@ namespace WindowsTOOLKIT
 
 
             int index = 0;
-            foreach (var elem in cbAfter )
+            foreach (var elem in cbAfter)
             {
-                
-                    //if (cb.Name == "CbTaskbarAlign")
-                    //{
-                    //    index = index;
-                    //}
-
-                    if (cbAfter[index] != cbBefore[index])
+                if (cbAfter[index] != cbBefore[index])
+                {
+                    if (index == 13)
                     {
                         await Task.Run(() =>
                         {
@@ -192,7 +188,7 @@ namespace WindowsTOOLKIT
                                 {
                                     FileName = "reg",
                                     Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
-                                    ((bool)cbAfter[index] ? "1" : "0") + " /f",
+                                                ((bool)cbAfter[index] ? "hide: home" : "") + " /f",
                                     RedirectStandardOutput = false,
                                     UseShellExecute = false,
                                     CreateNoWindow = true
@@ -202,11 +198,31 @@ namespace WindowsTOOLKIT
                             proc.WaitForExit();
                         });
                     }
-                    
-
-                    index++;
-
+                    else
+                    {
+                        await Task.Run(() =>
+                        {
+                            Process proc = new Process
+                            {
+                                StartInfo = new ProcessStartInfo
+                                {
+                                    FileName = "reg",
+                                    Arguments =
+                                        $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
+                                        ((bool)cbAfter[index] ? "1" : "0") + " /f",
+                                    RedirectStandardOutput = false,
+                                    UseShellExecute = false,
+                                    CreateNoWindow = true
+                                }
+                            };
+                            proc.Start();
+                            proc.WaitForExit();
+                        });
+                    }
+                }
+                index++;
             }
+
             this.Topmost = true;
             this.Activate();
             MessageBox.Show("Zapisano zmiany. Zrestartuj komputer, aby zmiany zostały zastosowane");
@@ -214,6 +230,7 @@ namespace WindowsTOOLKIT
             this.Topmost = false;
             this.Close();
         }
+
         private void WPersonalisation_Closed(object sender, EventArgs e)
         {
             if (!closedByProgram)
