@@ -32,9 +32,9 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <!-- <RowDefinition /> -->
+                    <!-- <RowDefinition /> -->
                 </Grid.RowDefinitions>
 
 
@@ -51,7 +51,7 @@
                 <Label Grid.Row="10" Grid.Column="0" Content="Wyśrodkuj pasek zadań" VerticalAlignment="Center" Margin="5"/>
                 <Label Grid.Row="11" Grid.Column="0" Content="Zabij proces po prawym kliknięciu na pasku zadań" VerticalAlignment="Center" Margin="5"/>
                 <Label Grid.Row="12" Grid.Column="0" Content="&quot;Wyszukiwanie Bing&quot; w menu start" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="13" Grid.Column="0" Content="Strona główna w ustawieniach" VerticalAlignment="Center" Margin="5"/>
+                <!-- <Label Grid.Row="13" Grid.Column="0" Content="Strona główna w ustawieniach" VerticalAlignment="Center" Margin="5"/> -->
                 
                 <!-- <Label Grid.Row="14" Grid.Column="0" Content="Transparentność systemu" VerticalAlignment="Center" Margin="5" Visibility="Hidden"/> -->
                 
@@ -68,7 +68,7 @@
                 <CheckBox x:Name="CbTaskbarAlign" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
                 <CheckBox x:Name="CbTaskKill" Grid.Row="11" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
                 <CheckBox x:Name="CbBingSearch" Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbHomePage" Grid.Row="13" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
+                <!-- <CheckBox x:Name="CbHomePage" Grid.Row="13" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
 
             </Grid>
         </ScrollViewer>

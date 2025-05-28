@@ -39,8 +39,7 @@ namespace WindowsTOOLKIT
                     @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings",
                     "TaskbarEndTask"), "REG_DWORD"),
                 ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search", "BingSearchEnabled"), "dword"),
-                ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer",
-                    "SettingsPageVisibility"), "REG_SZ")
+                
             };
 
         List<bool?> cbBefore = new List<bool?>();
@@ -109,18 +108,7 @@ namespace WindowsTOOLKIT
 
                     parts = output.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     // MessageBox.Show(cb.Name+ ": " + parts[parts.Length - 1]);
-                    if (cb.Name == "CbHomePage")
-                    {
-                        if (parts[parts.Length - 1].Contains("hide:home"))
-                        {
-                            cb.IsChecked = false;
-                        }
-                        else
-                        {
-                            cb.IsChecked = true;
-                        }
-                    }
-                    else if (parts[parts.Length - 1].Contains("0x1") || parts[parts.Length - 1].Contains("1"))
+                    if (parts[parts.Length - 1].Contains("0x1") || parts[parts.Length - 1].Contains("1"))
                     {
                         cb.IsChecked = true;
                     }
@@ -185,58 +173,31 @@ namespace WindowsTOOLKIT
                 if (cbAfter[index] != cbBefore[index])
                 {
                     current.Content = "Dostosowywanie systemu";
-                    if (index == 13)
+                    await Task.Run(() =>
                     {
-                        //string args = 
-                        //MessageBox.Show(args);
-                        await Task.Run(() =>
+                        Process proc = new Process
                         {
-                            Process proc = new Process
+                            StartInfo = new ProcessStartInfo
                             {
-                                StartInfo = new ProcessStartInfo
-                                {
-                                    FileName = "reg",
-                                    Arguments = $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
-                                                ((bool)cbAfter[index] ? " " : "\"hide: home\"") + " /f",
-                                    RedirectStandardOutput = false,
-                                    UseShellExecute = false,
-                                    CreateNoWindow = true
-                                }
-                            };
-                           
-                            proc.Start();
-                            //string temp = proc.StandardOutput.ReadToEnd();
-                            //MessageBox.Show(temp);
-                            proc.WaitForExit();
-                        });
-                        // MessageBox.Show(output);
-                    }
-                    else
-                    {
-                        await Task.Run(() =>
-                        {
-                            Process proc = new Process
-                            {
-                                StartInfo = new ProcessStartInfo
-                                {
-                                    FileName = "reg",
-                                    Arguments =
-                                        $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
-                                        ((bool)cbAfter[index] ? "1" : "0") + " /f",
-                                    RedirectStandardOutput = false,
-                                    UseShellExecute = false,
-                                    CreateNoWindow = true
-                                }
-                            };
-                            proc.Start();
-                            proc.WaitForExit();
-                        });
-                    }
+                                FileName = "reg",
+                                Arguments =
+                                    $"add \"{Keys[index].Item1.Item1}\" /v \"{Keys[index].Item1.Item2}\" /t {Keys[index].Item2} /d " +
+                                    ((bool)cbAfter[index] ? "1" : "0") + " /f",
+                                RedirectStandardOutput = false,
+                                UseShellExecute = false,
+                                CreateNoWindow = true
+                            }
+                        };
+                        proc.Start();
+                        proc.WaitForExit();
+                    });
                 }
+
                 index++;
             }
 
             current.Content = "Restartowanie explorer.exe";
+            bool ended = false;
 
             await Task.Run(() =>
             {
@@ -245,15 +206,25 @@ namespace WindowsTOOLKIT
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = "cmd.exe",
-                        Arguments = "/c taskill /f /im explorer.exe & start explorer.exe",
+                        Arguments = "/c taskkill /f /im explorer.exe & start explorer.exe",
                         RedirectStandardOutput = false,
                         UseShellExecute = false,
                         CreateNoWindow = true
                     }
                 };
+                proc.Start();
+                // MessageBox.Show(proc.StandardOutput.ReadToEnd());
+                proc.WaitForExit();
+                ended = true;
             });
 
+            
+
             this.Topmost = true;
+            while (!ended)
+            {
+                continue;
+            }
             this.Activate();
             MessageBox.Show("Zapisano zmiany. Zrestartuj komputer, aby zmiany zostały zastosowane");
             closedByProgram = true;
