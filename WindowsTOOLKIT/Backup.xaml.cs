@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection.Emit;
 using System.Windows;
 
 namespace WindowsTOOLKIT
@@ -30,7 +29,22 @@ namespace WindowsTOOLKIT
             proc.WaitForExit();
             if (output.Contains("No items found that satisfy the query."))
             {
-                MessageBox.Show(output);
+                var result = MessageBox.Show(
+                    "Brak zarezerwowanej przestrzeni dyskowej na kopie zapasowe. Czy chcesz ją utworzyć", 
+                    "Potwierdzenie", 
+                    MessageBoxButton.YesNo, 
+                    MessageBoxImage.Question
+                );
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show("Kliknięto TAK");
+                }
+                else
+                {
+                    MessageBox.Show("Kliknięto NIE");
+                }
+
             }
             
 
