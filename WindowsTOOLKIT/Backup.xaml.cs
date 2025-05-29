@@ -30,19 +30,34 @@ namespace WindowsTOOLKIT
             if (output.Contains("No items found that satisfy the query."))
             {
                 var result = MessageBox.Show(
-                    "Brak zarezerwowanej przestrzeni dyskowej na kopie zapasowe. Czy chcesz ją utworzyć", 
-                    "Potwierdzenie", 
+                    "Brak zarezerwowanej przestrzeni dyskowej na kopie zapasowe. Czy chcesz ją utworzyć?", 
+                    "Brak miejsca na kopie", 
                     MessageBoxButton.YesNo, 
                     MessageBoxImage.Question
                 );
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    MessageBox.Show("Kliknięto TAK");
+                    proc = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = "vssadmin",
+                            Arguments = "resize shadowstorage /for=C: /on=C: /maxsize=15GB",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            CreateNoWindow = false
+                        }
+                    };
+
+                    proc.Start();
+                    output = proc.StandardOutput.ReadToEnd();
+                    proc.WaitForExit();
+                    MessageBox.Show(output);
                 }
                 else
                 {
-                    MessageBox.Show("Kliknięto NIE");
+                    return;
                 }
 
             }
