@@ -6,7 +6,8 @@
         x:Name="WPersonalisation"
         mc:Ignorable="d"
         Title="Personalizacja" Height="450" Width="800"
-        Loaded="WPersonalisation_Loaded">
+        Loaded="WPersonalisation_Loaded"
+        Closing="WPersonalisation_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

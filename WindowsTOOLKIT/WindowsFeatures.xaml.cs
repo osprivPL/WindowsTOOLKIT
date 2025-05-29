@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.ComponentModel; 
 
 namespace WindowsTOOLKIT
 {
@@ -22,6 +23,7 @@ namespace WindowsTOOLKIT
 
         private async void winWindowsFeatures_Loaded(object sender, RoutedEventArgs e)
         {
+            closedByProgram = false;
             WFBTNsave.IsEnabled = false;
             WFBTNback.IsEnabled = false;
             var loading = new Label
@@ -68,13 +70,21 @@ namespace WindowsTOOLKIT
                         string name = parts[0];
                         string state = null;
                         int counter = 1;
-                        while (state != "Enabled" && state != "Disabled")
+                        try
                         {
-                            state = parts[parts.Length - counter];
-                            counter++;
-                        }
+                            while (state != "Enabled" && state != "Disabled")
+                            {
+                                state = parts[parts.Length - counter];
+                                counter++;
+                            }
 
-                        _featuresBefore.Add((name, state));
+                            _featuresBefore.Add((name, state));
+                        }
+                        catch (IndexOutOfRangeException){
+
+                            continue;
+                        }
+                        
                     }
                 }
                 else if (!show && line.StartsWith("---"))
@@ -117,6 +127,7 @@ namespace WindowsTOOLKIT
 
             WFBTNsave.IsEnabled = true;
             WFBTNback.IsEnabled = true;
+            closedByProgram = true;
         }
 
         private void WFBTNback_click(object sender, RoutedEventArgs e)
@@ -219,10 +230,11 @@ namespace WindowsTOOLKIT
             this.Close();
         }
 
-        private void winWindowsFeatures_Closed(object sender, EventArgs e)
+        private void winWindowsFeatures_Closing(object sender, CancelEventArgs e)
         {
             if (!closedByProgram)
             {
+                e.Cancel = true;
                 closedByProgram = false;
                 MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");    
             }

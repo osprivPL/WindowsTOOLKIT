@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="WindowsFeatures" Height="450" Width="800"
         x:Name="winWindowsFeatures" Loaded="winWindowsFeatures_Loaded"
-        Closed="winWindowsFeatures_Closed">
+        Closing="winWindowsFeatures_Closing">
 
     <Grid>
         <!-- Układ z dwiema wierszami -->

@@ -52,3 +52,5 @@ C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.c
 C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.csproj.CoreCompileInputs.cache
 C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.exe
 C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.pdb
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.g.cs
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.baml

@@ -58,12 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Backup.xaml.cs">
+      <DependentUpon>Backup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Personalisation.xaml.cs">
       <DependentUpon>Personalisation.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowsFeatures.xaml.cs">
       <DependentUpon>WindowsFeatures.xaml</DependentUpon>
     </Compile>
+    <Page Include="Backup.xaml" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -111,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\mmc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\systemAndSecurity.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,5 +36,12 @@ namespace WindowsTOOLKIT
             Personalisation window = new Personalisation();
             window.ShowDialog();
         }
+
+
+        private void BtnBackup_OnClick(object sender, RoutedEventArgs e)
+        {
+            Backup window = new Backup();
+            window.ShowDialog();
+        }
     }
 }

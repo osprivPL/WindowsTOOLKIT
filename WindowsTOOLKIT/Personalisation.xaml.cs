@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
@@ -133,6 +134,9 @@ namespace WindowsTOOLKIT
 
         private async void BtnSave_click(object sender, RoutedEventArgs e)
         {
+            closedByProgram = false;
+            BtnBack.IsEnabled = false;
+            BtnSave.IsEnabled = false;
             var cbIndex = cbBefore.Count - 1;
             List<bool?> cbAfter = new List<bool?>();
 
@@ -230,12 +234,16 @@ namespace WindowsTOOLKIT
             closedByProgram = true;
             this.Topmost = false;
             this.Close();
+            closedByProgram = true;
+            BtnBack.IsEnabled = true;
+            BtnSave.IsEnabled = true;
         }
 
-        private void WPersonalisation_Closed(object sender, EventArgs e)
+        private void WPersonalisation_Closing(object sender, CancelEventArgs e)
         {
             if (!closedByProgram)
             {
+                e.Cancel = true;
                 closedByProgram = false;
                 MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");
             }
