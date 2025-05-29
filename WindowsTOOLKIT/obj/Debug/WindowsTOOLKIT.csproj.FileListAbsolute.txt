@@ -54,3 +54,5 @@ C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.e
 C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsTOOLKIT.pdb
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.g.cs
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.baml
+C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.g.cs
+C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.baml

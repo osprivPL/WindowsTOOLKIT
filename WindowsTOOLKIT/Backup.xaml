@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Button x:Name="btnCreateBackup" Grid.Column="0" Grid.Row="0" Height="120" Margin="10" FontSize="16"
-                FontFamily="Comic Sans MS">
+                FontFamily="Comic Sans MS" Click="btnCreateBackup_Click">
             <TextBlock Text="Stwórz kopie zapasową" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False" />
         </Button>
         <Button x:Name="btnDeleteBackup" Grid.Column="2" Grid.Row="0" Height="120" Margin="10" FontSize="16"
