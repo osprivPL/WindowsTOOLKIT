@@ -65,11 +65,11 @@ namespace WindowsTOOLKIT
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "wmic.exe",
-                    Arguments = @"/Namespace:\\root\default Path SystemRestore Call CreateRestorePoint " + "\"WINDOWS TOOLKIT\"" + ", 100, 7",
-                    RedirectStandardOutput = true,
+                    FileName = "powershell.exe",
+                    Arguments = "Checkpoint-Computer -Description \"WINDOWS TOOLKIT\" -RestorePointType \"MODIFY_SETTINGS\"",
                     UseShellExecute = false,
-                    CreateNoWindow = true
+                    CreateNoWindow = true,
+                    RedirectStandardOutput = true
                 }
             };
 
