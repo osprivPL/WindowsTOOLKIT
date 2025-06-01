@@ -39,7 +39,7 @@ namespace WindowsTOOLKIT
                 ((
                     @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings",
                     "TaskbarEndTask"), "REG_DWORD"),
-                ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search", "BingSearchEnabled"), "dword"),
+                ((@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search", "BingSearchEnabled"), "REG_DWORD"),
                 
             };
 

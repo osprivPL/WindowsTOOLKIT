@@ -59,9 +59,26 @@ namespace WindowsTOOLKIT
                 {
                     return;
                 }
+            } // ochrona systemu wylaczona
 
-            }
+            proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "wmic.exe",
+                    Arguments = @"/Namespace:\\root\default Path SystemRestore Call CreateRestorePoint " + "\"WINDOWS TOOLKIT\"" + ", 100, 7",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }
+            };
+
+            proc.Start();
+            output = proc.StandardOutput.ReadToEnd();
+            proc.WaitForExit();
+            MessageBox.Show(output);
             
+
 
 
 
