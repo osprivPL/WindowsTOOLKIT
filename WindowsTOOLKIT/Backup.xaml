@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WindowsTOOLKIT"
         mc:Ignorable="d"
         Title="Backup" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="Gbackup">
+      
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />

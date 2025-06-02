@@ -576,6 +576,7 @@
             Subsequent code will check these rectangles both before and after the layout change.
             </summary>
             <param name="control">The control whose layout is changing state.</param>
+            <param name="templateRoot">The template root.</param>
             <param name="layoutStoryboard">The storyboard containing the layout changes.</param>
             <param name="originalValueRecords">Any previous values from previous state navigations that might be reverted.</param>
             <param name="movingElements">The set of elements currently in motion, if there is a state change transition ongoing.</param>
@@ -601,8 +602,10 @@
             Get the opacities of elements at the time of the state change, instead of visibilities, because the state change may be in process and the current value is the most important.
             </summary>
             <param name="control">The control whose state is changing.</param>
+            <param name="templateRoot">The template root.</param>
             <param name="layoutStoryboard">The storyboard with the layout properties.</param>
             <param name="originalValueRecords">The set of original values.</param>
+            <param name="movingElements">The elements currently in motion</param>
             <returns></returns>
         </member>
         <member name="M:Microsoft.Xaml.Behaviors.Core.ExtendedVisualStateManager.SetLayoutStoryboardProperties(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Windows.Media.Animation.Storyboard,System.Collections.Generic.List{Microsoft.Xaml.Behaviors.Core.ExtendedVisualStateManager.OriginalLayoutValueRecord})">
@@ -612,6 +615,7 @@
             All values that are overwritten will be stored in the collection of OriginalValueRecords so that they can be replaced later.
             </summary>
             <param name="control">The control whose state is changing.</param>
+            <param name="templateRoot">The template root.</param>
             <param name="layoutStoryboard">The Storyboard holding the layout properties.</param>
             <param name="originalValueRecords">The store of original values.</param>
         </member>
@@ -621,6 +625,8 @@
             they do not affect their sibling elements.
             </summary>
             <param name="movingElements">The set of elements that will be moving.</param>
+            <param name="oldRects">The old Rect.</param>
+            <param name="newRects">The new Rect.</param>
         </member>
         <member name="M:Microsoft.Xaml.Behaviors.Core.ExtendedVisualStateManager.UnwrapMovingElementsFromCanvases(System.Collections.Generic.List{System.Windows.FrameworkElement})">
             <summary>
@@ -634,13 +640,13 @@
             </summary>
             <param name="source">The source of the layout properties.</param>
             <param name="target">The destination of the layout properties.</param>
+            <param name="restoring">A flag to indicate if a restore is occuring.</param>
         </member>
         <member name="M:Microsoft.Xaml.Behaviors.Core.ExtendedVisualStateManager.CreateLayoutTransitionStoryboard(System.Windows.VisualTransition,System.Collections.Generic.List{System.Windows.FrameworkElement},System.Collections.Generic.Dictionary{System.Windows.FrameworkElement,System.Double})">
             <summary>
             Create the actual Storyboard that will be used to animate the transition. Use all previously calculated results.
             </summary>
-            <param name="duration">The duration of the animation.</param>
-            <param name="ease">The easing function to be used in the animation.</param>
+            <param name="transition">The transition.</param>
             <param name="movingElements">The set of elements that will be moving.</param>
             <param name="oldOpacities">The old opacities of the elements whose visibility properties are changing.</param>
             <returns>The Storyboard.</returns>
@@ -1054,6 +1060,12 @@
             <summary>
             Called when the trigger is being detached from its AssociatedObject, but before it has actually occurred.
             </summary>
+        </member>
+        <member name="M:Microsoft.Xaml.Behaviors.EventTriggerBase.UnregisterLoaded(System.Windows.FrameworkElement)">
+            <summary>
+            Removes the event handler from the Loaded event of the associated object.
+            </summary>
+            <param name="associatedElement">The associated object</param>
         </member>
         <member name="M:Microsoft.Xaml.Behaviors.EventTriggerBase.RegisterEvent(System.Object,System.String)">
             <exception cref="T:System.ArgumentException">Could not find eventName on the Target.</exception>
@@ -2302,12 +2314,12 @@
             <summary>
              Represents a collection of triggers with a shared AssociatedObject and provides change notifications to its contents when that AssociatedObject changes.
              </summary>
+             <remarks>Sealed, because this should not be inherited outside this assembly.</remarks>
         </member>
         <member name="M:Microsoft.Xaml.Behaviors.TriggerCollection.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.Xaml.Behaviors.TriggerCollection"/> class.
             </summary>
-            <remarks>Internal, because this should not be inherited outside this assembly.</remarks>
         </member>
         <member name="M:Microsoft.Xaml.Behaviors.TriggerCollection.OnAttached">
             <summary>

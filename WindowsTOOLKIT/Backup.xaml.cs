@@ -1,5 +1,9 @@
-﻿using System.Diagnostics;
+﻿using FontAwesome.WPF;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WindowsTOOLKIT
 {
@@ -10,7 +14,7 @@ namespace WindowsTOOLKIT
             InitializeComponent();
         }
 
-        private void btnCreateBackup_Click(object sender, RoutedEventArgs e)
+        private async void btnCreateBackup_Click(object sender, RoutedEventArgs e)
         {
             Process proc = new Process
             {
@@ -30,9 +34,9 @@ namespace WindowsTOOLKIT
             if (output.Contains("No items found that satisfy the query."))
             {
                 var result = MessageBox.Show(
-                    "Brak zarezerwowanej przestrzeni dyskowej na kopie zapasowe. Czy chcesz ją utworzyć?", 
-                    "Brak miejsca na kopie", 
-                    MessageBoxButton.YesNo, 
+                    "Brak zarezerwowanej przestrzeni dyskowej na kopie zapasowe. Czy chcesz ją utworzyć?",
+                    "Brak miejsca na kopie",
+                    MessageBoxButton.YesNo,
                     MessageBoxImage.Question
                 );
 
@@ -40,7 +44,7 @@ namespace WindowsTOOLKIT
                 {
                     proc = new Process
                     {
-                       StartInfo = new ProcessStartInfo
+                        StartInfo = new ProcessStartInfo
                         {
                             FileName = "vssadmin",
                             Arguments = "resize shadowstorage /for=C: /on=C: /maxsize=15GB",
@@ -51,9 +55,9 @@ namespace WindowsTOOLKIT
                     };
 
                     proc.Start();
-                    output = proc.StandardOutput.ReadToEnd();
+                    // output = proc.StandardOutput.ReadToEnd();
                     proc.WaitForExit();
-                    MessageBox.Show(output);
+                    // MessageBox.Show(output);
                 }
                 else
                 {
@@ -74,33 +78,92 @@ namespace WindowsTOOLKIT
                     CreateNoWindow = true
                 }
             };
-            
+
             proc.Start();
             proc.WaitForExit();
-            
+
+            btnCreateBackup.IsEnabled = false;
+            btnDeleteBackup.IsEnabled = false;
+            BtnBack.IsEnabled = false;
+
+            //Label creating = new Label
+            //{
+            //    Content = "Tworzenie kopii zapasowej systemu...",
+            //    Margin = new Thickness(5)
+            //};
+
+            Image loading = new ImageAwesome
+            {
+                //Stretch = System.Windows.Media.Stretch.Uniform,
+                //Width = 24,
+                //Height = 24
+                Icon = FontAwesomeIcon.Spinner,
+                Spin = true,
+                Width = 32,
+                Height = 32,
+                Foreground = Brushes.Gray
+            };
+
+            //BitmapImage gif = new BitmapImage();
+            //gif.BeginInit();
+            //gif.UriSource = new Uri("pack://application:,,,/Resources/FontAwesome.WPF/spinner.gif", UriKind.Absolute);
+            //gif.CacheOption = BitmapCacheOption.OnLoad;
+            //gif.EndInit();
+
+            //loading.Source = gif;
+
+            for (int i = Gbackup.Children.Count -1; i >= 0; i--)
+            {
+                var elem = Gbackup.Children[i];
+                if (elem is Button btn && btn.Name == "BtnBack")
+                {
+                    continue;
+                }
+                Gbackup.Children.Remove(elem);
+
+            }
+
+            Gbackup.Children.Add(loading);
+
+            await Task.Run(() =>
+            {
+                proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "powershell.exe",
+                        Arguments =
+                            @"Checkpoint-Computer -Description 'WINDOWS TOOLKIT' -RestorePointType ""MODIFY_SETTINGS"" ",
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true
+                    }
+                };
+
+                MessageBox.Show(proc.StartInfo.FileName + " " + proc.StartInfo.Arguments);
+
+                proc.Start();
+                output = proc.StandardOutput.ReadToEnd();
+                proc.WaitForExit();
+                MessageBox.Show(output);
+            });
+
             proc = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "powershell.exe",
-                    Arguments = "Checkpoint-Computer -Description \"WINDOWS TOOLKIT\" -RestorePointType \"MODIFY_SETTINGS\"",
+                    FileName = "reg",
+                    Arguments =
+                        "add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore \" " +
+                        "/v \"SystemRestorePointCreationFrequency\" /t REG_DWORD /d 86400 /f",
                     UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true
+                    RedirectStandardOutput = false,
+                    CreateNoWindow = true
                 }
             };
 
-            MessageBox.Show(proc.StartInfo.FileName + " " + proc.StartInfo.Arguments);
-            
             proc.Start();
-            output = proc.StandardOutput.ReadToEnd();
             proc.WaitForExit();
-            MessageBox.Show(output);
-            
-
-
-
-
         }
 
         private void BtnBack_OnClick(object sender, RoutedEventArgs e)
