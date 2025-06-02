@@ -56,3 +56,13 @@ C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.g.cs
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.baml
 C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.g.cs
 C:\Users\ospriv\Desktop\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\Backup.baml
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\MaterialDesignColors.dll
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\MaterialDesignColors.pdb
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\App.baml
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsT.65A27283.Up2Date
