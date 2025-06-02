@@ -1,4 +1,5 @@
-﻿using FontAwesome.WPF;
+﻿using System.ComponentModel;
+using FontAwesome.WPF;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
@@ -7,8 +8,9 @@ using System.Windows.Media;
 
 namespace WindowsTOOLKIT
 {
-    public partial class Backup : Window
+    public partial class Backup
     {
+        private bool Closable = true; 
         public Backup()
         {
             InitializeComponent();
@@ -16,6 +18,7 @@ namespace WindowsTOOLKIT
 
         private async void btnCreateBackup_Click(object sender, RoutedEventArgs e)
         {
+            Closable = false;
             Process proc = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -61,6 +64,7 @@ namespace WindowsTOOLKIT
                 }
                 else
                 {
+                    Closable = true;
                     return;
                 }
             } // ochrona systemu wylaczona
@@ -85,32 +89,16 @@ namespace WindowsTOOLKIT
             btnCreateBackup.IsEnabled = false;
             btnDeleteBackup.IsEnabled = false;
             BtnBack.IsEnabled = false;
-
-            //Label creating = new Label
-            //{
-            //    Content = "Tworzenie kopii zapasowej systemu...",
-            //    Margin = new Thickness(5)
-            //};
+            
 
             Image loading = new ImageAwesome
             {
-                //Stretch = System.Windows.Media.Stretch.Uniform,
-                //Width = 24,
-                //Height = 24
                 Icon = FontAwesomeIcon.Spinner,
                 Spin = true,
                 Width = 32,
                 Height = 32,
                 Foreground = Brushes.Gray
             };
-
-            //BitmapImage gif = new BitmapImage();
-            //gif.BeginInit();
-            //gif.UriSource = new Uri("pack://application:,,,/Resources/FontAwesome.WPF/spinner.gif", UriKind.Absolute);
-            //gif.CacheOption = BitmapCacheOption.OnLoad;
-            //gif.EndInit();
-
-            //loading.Source = gif;
 
             for (int i = Gbackup.Children.Count -1; i >= 0; i--)
             {
@@ -145,7 +133,7 @@ namespace WindowsTOOLKIT
                 proc.Start();
                 output = proc.StandardOutput.ReadToEnd();
                 proc.WaitForExit();
-                MessageBox.Show(output);
+                MessageBox.Show("Kopia zapasowa została utworzona pomyślnie.\n" + output);
             });
 
             proc = new Process
@@ -164,11 +152,23 @@ namespace WindowsTOOLKIT
 
             proc.Start();
             proc.WaitForExit();
+
+            Closable = true;
+            this.Close();
         }
 
         private void BtnBack_OnClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void winBackup_Closing(object sender, CancelEventArgs e)
+        {
+            if (!Closable)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");    
+            }
         }
     }
 }
