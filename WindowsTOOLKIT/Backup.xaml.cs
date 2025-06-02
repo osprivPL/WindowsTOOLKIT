@@ -40,7 +40,7 @@ namespace WindowsTOOLKIT
                 {
                     proc = new Process
                     {
-                        StartInfo = new ProcessStartInfo
+                       StartInfo = new ProcessStartInfo
                         {
                             FileName = "vssadmin",
                             Arguments = "resize shadowstorage /for=C: /on=C: /maxsize=15GB",
@@ -65,6 +65,23 @@ namespace WindowsTOOLKIT
             {
                 StartInfo = new ProcessStartInfo
                 {
+                    FileName = "reg",
+                    Arguments =
+                        "add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore \" " +
+                        "/v \"SystemRestorePointCreationFrequency\" /t REG_DWORD /d 0 /f",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = false,
+                    CreateNoWindow = true
+                }
+            };
+            
+            proc.Start();
+            proc.WaitForExit();
+            
+            proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
                     FileName = "powershell.exe",
                     Arguments = "Checkpoint-Computer -Description \"WINDOWS TOOLKIT\" -RestorePointType \"MODIFY_SETTINGS\"",
                     UseShellExecute = false,
@@ -73,6 +90,8 @@ namespace WindowsTOOLKIT
                 }
             };
 
+            MessageBox.Show(proc.StartInfo.FileName + " " + proc.StartInfo.Arguments);
+            
             proc.Start();
             output = proc.StandardOutput.ReadToEnd();
             proc.WaitForExit();

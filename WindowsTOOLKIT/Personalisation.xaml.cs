@@ -124,6 +124,8 @@ namespace WindowsTOOLKIT
                     index++;
                 }
             }
+
+            closedByProgram = true;
         }
 
 
