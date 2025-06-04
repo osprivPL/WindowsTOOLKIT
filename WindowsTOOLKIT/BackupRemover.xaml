@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WindowsTOOLKIT"
         mc:Ignorable="d"
         Title="BackupRemover" Height="450" Width="800"
         x:Name="WinBackupRemover"
@@ -20,6 +19,6 @@
             <UniformGrid x:Name="GBackups" Columns="2" Margin="20" />
         </ScrollViewer>
 
-        <Button x:Name="btnBack" Grid.Row="1" Width="200" HorizontalAlignment="Left" Margin="10" Click="btnBack_Click" Content="Powrót" FontSize="20"/>
+        <Button x:Name="BtnBack" Grid.Row="1" Width="200" HorizontalAlignment="Left" Margin="10" Click="btnBack_Click" Content="Powrót" FontSize="20"/>
     </Grid>
 </Window>

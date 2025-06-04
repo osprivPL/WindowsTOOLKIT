@@ -25,8 +25,8 @@ namespace WindowsTOOLKIT
         private async void winWindowsFeatures_Loaded(object sender, RoutedEventArgs e)
         {
             closedByProgram = false;
-            WFBTNsave.IsEnabled = false;
-            WFBTNback.IsEnabled = false;
+            WfbtNsave.IsEnabled = false;
+            WfbtNback.IsEnabled = false;
             var loading = new Label
             {
                 Content = "Wczytywanie...",
@@ -131,8 +131,8 @@ namespace WindowsTOOLKIT
             }
 
 
-            WFBTNsave.IsEnabled = true;
-            WFBTNback.IsEnabled = true;
+            WfbtNsave.IsEnabled = true;
+            WfbtNback.IsEnabled = true;
             closedByProgram = true;
         }
 
@@ -144,8 +144,8 @@ namespace WindowsTOOLKIT
         private async void WFBTNSave_click(object sender, RoutedEventArgs e)
         {
             closedByProgram = false;
-            WFBTNsave.IsEnabled = false;
-            WFBTNback.IsEnabled = false;
+            WfbtNsave.IsEnabled = false;
+            WfbtNback.IsEnabled = false;
             var lblIndex = _featuresBefore.Count - 1;
             var cbIndex = _featuresBefore.Count - 1;
             List<(string Name, string State)> featuresAfter = new List<(string Name, string State)>();

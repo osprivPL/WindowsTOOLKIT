@@ -1,7 +1,6 @@
 ﻿<Window x:Class="WindowsTOOLKIT.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
@@ -11,7 +10,6 @@
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -27,35 +25,35 @@
         </Grid.ColumnDefinitions>
 
         <Image Source="assets/mmc.png"
-               Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"
+               Grid.Row="0" Grid.Column="3" Grid.RowSpan="3" Grid.ColumnSpan="2"
                Margin="20"
                Stretch="Uniform" />
 
-        <Button x:Name="btnWindowsFeatures"
-                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+        <Button x:Name="BtnWindowsFeatures"
+                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                 Height="120"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Click="btnWindowsFeatures_Click"
                 Margin="10">
-            <TextBlock Text="Zarządzaj funkcjami systemu" TextAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Text="Zarządzaj funkcjami systemu" TextAlignment="Center" TextWrapping="Wrap" />
         </Button>
 
-        <Button x:Name="btnPersonalisation"
-                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+        <Button x:Name="BtnPersonalisation"
+                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                 Height="120"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Click="btnPersonalisation_Click"
                 Margin="10">
-            <TextBlock Text="Personalizacja" TextAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Text="Personalizacja" TextAlignment="Center" TextWrapping="Wrap" />
         </Button>
 
-        <Button x:Name="btnBackup"
-                Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
+        <Button x:Name="BtnBackup"
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                 Height="120"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Click="BtnBackup_OnClick"
                 Margin="10">
-            <TextBlock Text="Kopia zapasowa" TextAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock Text="Kopia zapasowa" TextAlignment="Center" TextWrapping="Wrap" />
         </Button>
     </Grid>
 </Window>

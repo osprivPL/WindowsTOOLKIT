@@ -10,7 +10,7 @@ namespace WindowsTOOLKIT
 {
     public partial class Backup
     {
-        private bool Closable = true; 
+        private bool _closable = true; 
         public Backup()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace WindowsTOOLKIT
 
         private async void btnCreateBackup_Click(object sender, RoutedEventArgs e)
         {
-            Closable = false;
+            _closable = false;
             Process proc = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -64,7 +64,7 @@ namespace WindowsTOOLKIT
                 }
                 else
                 {
-                    Closable = true;
+                    _closable = true;
                     return;
                 }
             } // ochrona systemu wylaczona
@@ -86,8 +86,8 @@ namespace WindowsTOOLKIT
             proc.Start();
             proc.WaitForExit();
 
-            btnCreateBackup.IsEnabled = false;
-            btnDeleteBackup.IsEnabled = false;
+            BtnCreateBackup.IsEnabled = false;
+            BtnDeleteBackup.IsEnabled = false;
             BtnBack.IsEnabled = false;
             
 
@@ -95,22 +95,19 @@ namespace WindowsTOOLKIT
             {
                 Icon = FontAwesomeIcon.Spinner,
                 Spin = true,
-                Width = 32,
-                Height = 32,
+                Width = 128,
+                Height = 128,
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
                 Foreground = Brushes.Gray
             };
 
-            for (int i = Gbackup.Children.Count -1; i >= 0; i--)
-            {
-                var elem = Gbackup.Children[i];
-                if (elem is Button btn && btn.Name == "BtnBack")
-                {
-                    continue;
-                }
-                Gbackup.Children.Remove(elem);
-
-            }
-
+            Gbackup.Children.Clear();
+            Gbackup.RowDefinitions.Clear();
+            Gbackup.ColumnDefinitions.Clear();
+            Gbackup.RowDefinitions.Add(new RowDefinition());
+            Gbackup.ColumnDefinitions.Add(new ColumnDefinition());
+            
             Gbackup.Children.Add(loading);
 
             await Task.Run(() =>
@@ -128,7 +125,7 @@ namespace WindowsTOOLKIT
                     }
                 };
 
-                MessageBox.Show(proc.StartInfo.FileName + " " + proc.StartInfo.Arguments);
+                // MessageBox.Show(proc.StartInfo.FileName + " " + proc.StartInfo.Arguments);
 
                 proc.Start();
                 output = proc.StandardOutput.ReadToEnd();
@@ -153,7 +150,7 @@ namespace WindowsTOOLKIT
             proc.Start();
             proc.WaitForExit();
 
-            Closable = true;
+            _closable = true;
             this.Close();
         }
 
@@ -164,7 +161,7 @@ namespace WindowsTOOLKIT
 
         private void winBackup_Closing(object sender, CancelEventArgs e)
         {
-            if (!Closable)
+            if (!_closable)
             {
                 e.Cancel = true;
                 MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");    

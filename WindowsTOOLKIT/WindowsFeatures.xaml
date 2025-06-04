@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WindowsTOOLKIT"
         mc:Ignorable="d"
         Title="WindowsFeatures" Height="450" Width="550"
-        x:Name="winWindowsFeatures"
+        x:Name="WinWindowsFeatures"
         Loaded="winWindowsFeatures_Loaded"
         Closing="winWindowsFeatures_Closing">
 
@@ -39,8 +38,8 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="WFBTNback" Content="Powrót" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Click="WFBTNback_click"/>
-            <Button x:Name="WFBTNsave" Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1" Click="WFBTNSave_click"/>
+            <Button x:Name="WfbtNback" Content="Powrót" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Click="WFBTNback_click"/>
+            <Button x:Name="WfbtNsave" Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1" Click="WFBTNSave_click"/>
         </Grid>
     </Grid>
 </Window>

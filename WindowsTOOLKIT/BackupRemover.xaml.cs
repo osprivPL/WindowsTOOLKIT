@@ -145,7 +145,7 @@ namespace WindowsTOOLKIT
                             Day = day,
                             Month = int.Parse(s.Substring(3, 2)),
                             Year = int.Parse(s.Substring(6, 4)),
-                            Description = s.Substring(begins[1], ends[1] - begins[1] +2) //.Trim()
+                            Description = s.Substring(begins[1], ends[1] - begins[1] + 2) //.Trim()
                         };
                         _restorePoints.Add(rp);
                     }
@@ -165,8 +165,6 @@ namespace WindowsTOOLKIT
                     var index = 0;
                     foreach (var rp in _restorePoints)
                     {
-                        // GBackups.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
                         var date = new Label
                         {
                             Content = $"{rp.Day:00}.{rp.Month:00}.{rp.Year}",
@@ -186,12 +184,12 @@ namespace WindowsTOOLKIT
                             FontSize = 16,
                             Foreground = Brushes.Black
                         };
-                        
+
                         Grid.SetColumn(date, 0);
                         Grid.SetColumn(descript, 1);
                         Grid.SetRow(date, index);
                         Grid.SetRow(descript, index);
-                        
+
                         GBackups.Children.Add(date);
                         GBackups.Children.Add(descript);
 
@@ -213,8 +211,6 @@ namespace WindowsTOOLKIT
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            
         }
-
     }
 }
