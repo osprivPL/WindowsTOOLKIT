@@ -1,0 +1,25 @@
+﻿<Window x:Class="WindowsTOOLKIT.BackupRemover"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsTOOLKIT"
+        mc:Ignorable="d"
+        Title="BackupRemover" Height="450" Width="800"
+        x:Name="WinBackupRemover"
+        Loaded="WinBackupRemover_Loaded"
+        Closing="winBackupRemover_closing">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <UniformGrid x:Name="GBackups" Columns="2" Margin="20" />
+        </ScrollViewer>
+
+        <Button x:Name="btnBack" Grid.Row="1" Width="200" HorizontalAlignment="Left" Margin="10" Click="btnBack_Click" Content="Powrót" FontSize="20"/>
+    </Grid>
+</Window>
