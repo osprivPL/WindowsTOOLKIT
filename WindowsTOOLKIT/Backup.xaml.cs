@@ -130,6 +130,8 @@ namespace WindowsTOOLKIT
                 proc.Start();
                 output = proc.StandardOutput.ReadToEnd();
                 proc.WaitForExit();
+                this.Topmost = true;
+                this.Activate();
                 MessageBox.Show("Kopia zapasowa została utworzona pomyślnie.\n" + output);
             });
 

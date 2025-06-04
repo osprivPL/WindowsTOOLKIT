@@ -60,7 +60,6 @@
                     Width="180"
                     Height="40"
                     HorizontalAlignment="Left"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
                     Click="BtnBack_OnClick" />
         </Grid>
     </Grid>
