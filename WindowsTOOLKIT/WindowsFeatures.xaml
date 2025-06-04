@@ -5,32 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsTOOLKIT"
         mc:Ignorable="d"
-        Title="WindowsFeatures" Height="450" Width="800"
-        x:Name="winWindowsFeatures" Loaded="winWindowsFeatures_Loaded"
+        Title="WindowsFeatures" Height="450" Width="550"
+        x:Name="winWindowsFeatures"
+        Loaded="winWindowsFeatures_Loaded"
         Closing="winWindowsFeatures_Closing">
 
     <Grid>
-        <!-- Układ z dwiema wierszami -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- Przewijalna część -->
             <RowDefinition Height="Auto" />
-            <!-- Przyciski -->
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <Grid x:Name="GFeatures">
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+
+                <Grid x:Name="GFeatures" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
             </Grid>
         </ScrollViewer>
+
+
 
         <Grid Grid.Row="1" x:Name="BottomDiv" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <Button x:Name="WFBTNback" Content="Powrót" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Click="WFBTNback_click"/>

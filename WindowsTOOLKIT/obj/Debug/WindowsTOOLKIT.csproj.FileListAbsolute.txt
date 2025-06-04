@@ -68,3 +68,5 @@ C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\App.baml
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\WindowsT.65A27283.Up2Date
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\FontAwesome.WPF.dll
 C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\bin\Debug\FontAwesome.WPF.xml
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\BackupRemover.g.cs
+C:\WORKSPACE\c#\klekot\WindowsTOOLKIT\WindowsTOOLKIT\obj\Debug\BackupRemover.baml

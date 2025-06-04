@@ -1,46 +1,61 @@
 ﻿<Window x:Class="WindowsTOOLKIT.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Windows TOOLKIT" Height="600" Width="800">
+        Title="Windows TOOLKIT"
+        Height="600" Width="800"
+        Background="{DynamicResource MaterialDesignPaper}">
 
-    <Grid>
-        <!-- Definicja wierszy (wysokości) -->
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-
         </Grid.RowDefinitions>
 
-        <!-- Definicja kolumn (szerokości) -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-
-
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <!--<Border Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="LightBlue" BorderBrush="Black" BorderThickness="2" Margin="0,0,0,108">-->
-        <Image Source="assets/mmc.png" Margin="20,0,0,0" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <!--</Border>-->
-        <Button x:Name="btnWindowsFeatures" Grid.Column="2" Grid.ColumnSpan="2" Height="120" Margin="10" FontSize="16" FontFamily="Comic Sans MS" Click="btnWindowsFeatures_Click">
-            <TextBlock Text="Zarządzaj funkcjami systemu" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
-        </Button>
-        <Button x:Name="btnPersonalisation" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"  Height="120" Margin="10" FontSize="16" FontFamily="Comic Sans MS" Click="btnPersonalisation_Click">
-            <TextBlock Text="Personalizacja" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
-        </Button>
-        <Button x:Name="btnBackup" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1"  Height="120" Margin="10" FontSize="16" FontFamily="Comic Sans MS" Click="BtnBackup_OnClick">
-            <TextBlock Text="Kopia zapasowa" TextWrapping="Wrap" TextAlignment="Center" IsEnabled="False"/>
+
+        <Image Source="assets/mmc.png"
+               Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"
+               Margin="20"
+               Stretch="Uniform" />
+
+        <Button x:Name="btnWindowsFeatures"
+                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                Height="120"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Click="btnWindowsFeatures_Click"
+                Margin="10">
+            <TextBlock Text="Zarządzaj funkcjami systemu" TextAlignment="Center" TextWrapping="Wrap"/>
         </Button>
 
+        <Button x:Name="btnPersonalisation"
+                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                Height="120"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Click="btnPersonalisation_Click"
+                Margin="10">
+            <TextBlock Text="Personalizacja" TextAlignment="Center" TextWrapping="Wrap"/>
+        </Button>
+
+        <Button x:Name="btnBackup"
+                Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"
+                Height="120"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Click="BtnBackup_OnClick"
+                Margin="10">
+            <TextBlock Text="Kopia zapasowa" TextAlignment="Center" TextWrapping="Wrap"/>
+        </Button>
     </Grid>
-
-
 </Window>

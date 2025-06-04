@@ -170,5 +170,11 @@ namespace WindowsTOOLKIT
                 MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");    
             }
         }
+
+        private void btnDeleteBackup_Click(object sender, RoutedEventArgs e)
+        {
+            BackupRemover window = new BackupRemover();
+            window.ShowDialog();
+        }
     }
 }

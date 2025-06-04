@@ -5,7 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.ComponentModel; 
+using System.ComponentModel;
+using System.Windows.Media;
 
 namespace WindowsTOOLKIT
 {
@@ -95,8 +96,6 @@ namespace WindowsTOOLKIT
 
             _featuresBefore = _featuresBefore.OrderBy(feature => feature.Name).ToList(); // BY bylo alfabetycznie
             int row = 0;
-
-            //wypisywanie tego na ekran
             foreach (var feature in _featuresBefore)
             {
                 GFeatures.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -104,13 +103,19 @@ namespace WindowsTOOLKIT
                 var label = new Label
                 {
                     Content = feature.Name,
-                    Margin = new Thickness(5)
+                    Margin = new Thickness(10, 5, 10, 5),
+                    FontSize = 16,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Foreground = Brushes.Black
                 };
 
                 var checkbox = new CheckBox
                 {
                     IsChecked = feature.State == "Enabled",
-                    Margin = new Thickness(5)
+                    Margin = new Thickness(10, 5, 10, 5),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    FontSize = 16
                 };
 
                 Grid.SetRow(label, row);
@@ -124,6 +129,7 @@ namespace WindowsTOOLKIT
 
                 row++;
             }
+
 
             WFBTNsave.IsEnabled = true;
             WFBTNback.IsEnabled = true;

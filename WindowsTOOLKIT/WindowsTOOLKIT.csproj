@@ -78,6 +78,9 @@
     <Compile Include="Backup.xaml.cs">
       <DependentUpon>Backup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackupRemover.xaml.cs">
+      <DependentUpon>BackupRemover.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Personalisation.xaml.cs">
       <DependentUpon>Personalisation.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,10 @@
       <DependentUpon>WindowsFeatures.xaml</DependentUpon>
     </Compile>
     <Page Include="Backup.xaml" />
+    <Page Include="BackupRemover.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,87 +1,119 @@
 ﻿<Window x:Class="WindowsTOOLKIT.Personalisation"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        x:Name="WPersonalisation"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Personalizacja" Height="450" Width="800"
+        Title="Personalizacja"
+        Height="600" Width="900"
         Loaded="WPersonalisation_Loaded"
-        Closing="WPersonalisation_Closing">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <Grid x:Name="GPersonalisation"  Margin="20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <!-- <RowDefinition /> -->
-                    <!-- <RowDefinition /> -->
-                </Grid.RowDefinitions>
-
-
-                <Label Grid.Row="0" Grid.Column="0" Content="Tryb jasny dla systemu" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="1" Grid.Column="0" Content="Tryb jasny dla aplikacji" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="2" Grid.Column="0" Content="Przycisk &quot;Widok zadań &quot; na pasku zadań" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="3" Grid.Column="0" Content="Wyszukiwanie na pasku zadań" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="4" Grid.Column="0" Content="Verbose Status" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="5" Grid.Column="0" Content="Rekomendacje w Menu Start" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="6" Grid.Column="0" Content="Pokaż sekundy na pasku zadań" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="7" Grid.Column="0" Content="Akceleracja myszy" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="8" Grid.Column="0" Content="Ukryj rozszerzenia plików" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="9" Grid.Column="0" Content="Pokaż ukryte pliki i foldery" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="10" Grid.Column="0" Content="Wyśrodkuj pasek zadań" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="11" Grid.Column="0" Content="Zabij proces po prawym kliknięciu na pasku zadań" VerticalAlignment="Center" Margin="5"/>
-                <Label Grid.Row="12" Grid.Column="0" Content="&quot;Wyszukiwanie Bing&quot; w menu start" VerticalAlignment="Center" Margin="5"/>
-                <!-- <Label Grid.Row="13" Grid.Column="0" Content="Strona główna w ustawieniach" VerticalAlignment="Center" Margin="5"/> -->
-                
-                <!-- <Label Grid.Row="14" Grid.Column="0" Content="Transparentność systemu" VerticalAlignment="Center" Margin="5" Visibility="Hidden"/> -->
-                
-                <CheckBox x:Name="CbSystemDark" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbAppDark" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbTaskView" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbSearchBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbVerbose" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbRecomendation" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbSeconds" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbAcceleration" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbExtensions" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbHidden" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbTaskbarAlign" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbTaskKill" Grid.Row="11" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <CheckBox x:Name="CbBingSearch" Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/>
-                <!-- <CheckBox x:Name="CbHomePage" Grid.Row="13" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
-
-            </Grid>
+        Closing="WPersonalisation_Closing"
+        Background="{DynamicResource MaterialDesignPaper}">
+    <!-- <Grid> -->
+    <!--     <Grid.RowDefinitions> -->
+    <!--         <RowDefinition Height="*" /> -->
+    <!--         <RowDefinition Height="Auto" /> -->
+    <!--     </Grid.RowDefinitions> -->
+    <!-- -->
+    <!--     <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto"> -->
+    <!--         <Grid x:Name="GPersonalisation"  Margin="20"> -->
+    <!--             <Grid.ColumnDefinitions> -->
+    <!--                 <ColumnDefinition Width="2*" /> -->
+    <!--                 <ColumnDefinition Width="Auto" /> -->
+    <!--             </Grid.ColumnDefinitions> -->
+    <!--             <Grid.RowDefinitions> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 <RowDefinition Height="Auto" /> -->
+    <!--                 ~1~ <RowDefinition /> @1@ -->
+    <!--                 ~1~ <RowDefinition /> @1@ -->
+    <!--             </Grid.RowDefinitions> -->
+    <!-- -->
+    <!-- -->
+    <!--             <Label Grid.Row="0" Grid.Column="0" Content="Tryb jasny dla systemu" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="1" Grid.Column="0" Content="Tryb jasny dla aplikacji" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="2" Grid.Column="0" Content="Przycisk &quot;Widok zadań &quot; na pasku zadań" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="3" Grid.Column="0" Content="Wyszukiwanie na pasku zadań" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="4" Grid.Column="0" Content="Verbose Status" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="5" Grid.Column="0" Content="Rekomendacje w Menu Start" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="6" Grid.Column="0" Content="Pokaż sekundy na pasku zadań" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="7" Grid.Column="0" Content="Akceleracja myszy" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="8" Grid.Column="0" Content="Ukryj rozszerzenia plików" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="9" Grid.Column="0" Content="Pokaż ukryte pliki i foldery" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="10" Grid.Column="0" Content="Wyśrodkuj pasek zadań" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="11" Grid.Column="0" Content="Zabij proces po prawym kliknięciu na pasku zadań" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             <Label Grid.Row="12" Grid.Column="0" Content="&quot;Wyszukiwanie Bing&quot; w menu start" VerticalAlignment="Center" Margin="5"/> -->
+    <!--             ~1~ <Label Grid.Row="13" Grid.Column="0" Content="Strona główna w ustawieniach" VerticalAlignment="Center" Margin="5"/> @1@ -->
+    <!--              -->
+    <!--             ~1~ <Label Grid.Row="14" Grid.Column="0" Content="Transparentność systemu" VerticalAlignment="Center" Margin="5" Visibility="Hidden"/> @1@ -->
+    <!--              -->
+    <!--             <CheckBox x:Name="CbSystemDark" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbAppDark" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbTaskView" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbSearchBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbVerbose" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbRecomendation" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbSeconds" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbAcceleration" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbExtensions" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbHidden" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbTaskbarAlign" Grid.Row="10" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbTaskKill" Grid.Row="11" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             <CheckBox x:Name="CbBingSearch" Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> -->
+    <!--             ~1~ <CheckBox x:Name="CbHomePage" Grid.Row="13" Grid.Column="1" VerticalAlignment="Center" Margin="10,5"/> @1@ -->
+    <!-- -->
+    <!--         </Grid> -->
+    <!--     </ScrollViewer> -->
+    <!-- -->
+    <!--     <Grid Grid.Row="1" x:Name="BottomDiv" Margin="10"> -->
+    <!--         <Grid.ColumnDefinitions> -->
+    <!--             <ColumnDefinition Width="*" /> -->
+    <!--             <ColumnDefinition Width="*" /> -->
+    <!--         </Grid.ColumnDefinitions> -->
+    <!-- -->
+    <!--         <Button x:Name="BtnBack" Content="Powrót" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Click="BtnBack_click"/> -->
+    <!--         <Button x:Name="BtnSave" Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1" Click="BtnSave_click"/> -->
+    <!--     </Grid> -->
+    <!-- </Grid> -->
+    <DockPanel Margin="20">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="BtnBack"
+                    Content="Powrót"
+                    Click="BtnBack_click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}" />
+            <Button x:Name="BtnSave"
+                    Content="Zapisz"
+                    Click="BtnSave_click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}" />
+        </StackPanel>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <UniformGrid x:Name="GPersonalisation" Columns="2" Rows="0" Margin="0,0,0,10">
+                <CheckBox x:Name="CbSystemDark" Content="Tryb jasny dla systemu" Margin="10"/>
+                <CheckBox x:Name="CbAppDark" Content="Tryb jasny dla aplikacji" Margin="10"/>
+                <CheckBox x:Name="CbTaskView" Content="Przycisk 'Widok zadań'" Margin="10"/>
+                <CheckBox x:Name="CbSearchBox" Content="Wyszukiwanie na pasku zadań" Margin="10"/>
+                <CheckBox x:Name="CbVerbose" Content="Verbose Status" Margin="10"/>
+                <CheckBox x:Name="CbRecomendation" Content="Rekomendacje w Menu Start" Margin="10"/>
+                <CheckBox x:Name="CbSeconds" Content="Pokaż sekundy na pasku zadań" Margin="10"/>
+                <CheckBox x:Name="CbAcceleration" Content="Akceleracja myszy" Margin="10"/>
+                <CheckBox x:Name="CbExtensions" Content="Ukryj rozszerzenia plików" Margin="10"/>
+                <CheckBox x:Name="CbHidden" Content="Pokaż ukryte pliki/foldery" Margin="10"/>
+                <CheckBox x:Name="CbTaskbarAlign" Content="Wyśrodkuj pasek zadań" Margin="10"/>
+                <CheckBox x:Name="CbTaskKill" Content="Zabij proces po PPM" Margin="10"/>
+                <CheckBox x:Name="CbBingSearch" Content="Bing w menu start" Margin="10"/>
+            </UniformGrid>
         </ScrollViewer>
-
-        <Grid Grid.Row="1" x:Name="BottomDiv" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Button x:Name="BtnBack" Content="Powrót" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Click="BtnBack_click"/>
-            <Button x:Name="BtnSave" Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Column="1" Click="BtnSave_click"/>
-        </Grid>
-    </Grid>
+    </DockPanel>
 </Window>
