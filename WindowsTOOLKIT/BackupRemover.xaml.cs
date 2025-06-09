@@ -48,8 +48,10 @@ namespace WindowsTOOLKIT
                 {
                     Icon = FontAwesomeIcon.Spinner,
                     Spin = true,
-                    Width = 32,
-                    Height = 32,
+                    Width = 64,
+                    Height = 64,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center,
                     Foreground = Brushes.Gray
                 }
             );

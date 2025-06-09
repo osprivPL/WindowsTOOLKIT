@@ -10,7 +10,7 @@ namespace WindowsTOOLKIT
 {
     public partial class Backup
     {
-        private bool _closable = true; 
+        private bool _closable = true;
         public Backup()
         {
             InitializeComponent();
@@ -34,6 +34,24 @@ namespace WindowsTOOLKIT
             proc.Start();
             string output = proc.StandardOutput.ReadToEnd();
             proc.WaitForExit();
+            proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "Powershell.exe",
+                    Arguments = @"Set-Service -Name 'VSS' -StartupType Manual; Start-Service -Name 'VSS'; Set-Service -Name 'swprv' -StartupType Manual; Start-Service -Name 'swprv'; Enable-ComputerRestore -Drive ""C:\""",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = false,
+                    CreateNoWindow = true
+
+
+                }
+            };
+
+            proc.Start();
+            proc.WaitForExit();
+
+           
             if (output.Contains("No items found that satisfy the query."))
             {
                 var result = MessageBox.Show(
@@ -53,7 +71,7 @@ namespace WindowsTOOLKIT
                             Arguments = "resize shadowstorage /for=C: /on=C: /maxsize=15GB",
                             UseShellExecute = false,
                             RedirectStandardOutput = true,
-                            CreateNoWindow = false
+                            CreateNoWindow = true
                         }
                     };
 
@@ -61,13 +79,19 @@ namespace WindowsTOOLKIT
                     // output = proc.StandardOutput.ReadToEnd();
                     proc.WaitForExit();
                     // MessageBox.Show(output);
+
+
                 }
                 else
                 {
                     _closable = true;
                     return;
                 }
-            } // ochrona systemu wylaczona
+            }
+
+
+
+
 
             proc = new Process
             {
@@ -89,7 +113,7 @@ namespace WindowsTOOLKIT
             BtnCreateBackup.IsEnabled = false;
             BtnDeleteBackup.IsEnabled = false;
             BtnBack.IsEnabled = false;
-            
+
 
             Image loading = new ImageAwesome
             {
@@ -107,7 +131,7 @@ namespace WindowsTOOLKIT
             Gbackup.ColumnDefinitions.Clear();
             Gbackup.RowDefinitions.Add(new RowDefinition());
             Gbackup.ColumnDefinitions.Add(new ColumnDefinition());
-            
+
             Gbackup.Children.Add(loading);
 
             await Task.Run(() =>
@@ -130,10 +154,15 @@ namespace WindowsTOOLKIT
                 proc.Start();
                 output = proc.StandardOutput.ReadToEnd();
                 proc.WaitForExit();
-                this.Topmost = true;
-                this.Activate();
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    this.Topmost = true;
+                    this.Activate();
+                });
                 MessageBox.Show("Kopia zapasowa została utworzona pomyślnie.\n" + output);
             });
+
+
 
             proc = new Process
             {
@@ -166,7 +195,7 @@ namespace WindowsTOOLKIT
             if (!_closable)
             {
                 e.Cancel = true;
-                MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");    
+                MessageBox.Show("Zamknięcie okna będzie możliwe po zakończeniu operacji");
             }
         }
 

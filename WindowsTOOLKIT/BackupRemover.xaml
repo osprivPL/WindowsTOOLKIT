@@ -16,8 +16,14 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <UniformGrid x:Name="GBackups" Columns="2" Margin="20" />
+            <Grid x:Name="GBackups" Margin="20" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
         </ScrollViewer>
+        
 
         <Button x:Name="BtnBack" Grid.Row="1" Width="200" HorizontalAlignment="Left" Margin="10" Click="btnBack_Click" Content="Powrót" FontSize="20"/>
     </Grid>
