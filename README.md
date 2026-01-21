@@ -65,23 +65,17 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
    ```bash
-   git clone [[https://github.com/](https://github.com/)[your-username]/[repo-name].git](https://github.com/osprivPL/WindowsTOOLKIT.git)
+   git clone https://github.com/osprivPL/WindowsTOOLKIT.git
    cd WindowsTOOLKIT/bin/Debug
    WindowsTOOLKIT.exe
    ```
 
 ## Project Status
-🚧 The project is currently in last phase of development
+🚧 The project is currently closed, it contains some bugs, which are easy to fix
 
 ## Contributing
 
-🤝 Contributions are always welcome! If you'd like to improve this project:
-
-1. Fork the repository.
-2. Create a new Branch (`git checkout -b feature/NewFeature`).
-3. Commit your changes (`git commit -m 'Add some NewFeature'`).
-4. Push to the Branch (`git push origin feature/NewFeature`).
-5. Open a Pull Request.
+🤝 Feel free to develop this project on your own!!
 
 
 ## License
@@ -89,10 +83,10 @@ Before you begin, ensure you have met the following requirements:
 
 ## Contact
 📞 **Contact:**
-Created by: [osprivPL / Michał Ożdżyński]
+Created by: osprivPL / Michał Ożdżyński
 
 GitHub: @osprivPL
 
-Email: [michalOzdz@icloud.com]
+Email: michalOzdz@icloud.com
 
 Project Link: https://github.com/osprivPL/WindowsTOOLKIT
