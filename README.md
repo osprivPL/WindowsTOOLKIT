@@ -18,9 +18,9 @@ Easy Windows management toolkit including telemetry, DISM packages, and backups
 
 ---
 
-## 🧐 About the Project
+## About the Project
 
-A Windows toolkit that gathers the most important settings in one place. It allows you to manage additional features (DISM), backups, and easy personalization (dark mode, telemetry, etc.).
+🧐 **About:** A Windows toolkit that gathers the most important settings in one place. It allows you to manage additional features (DISM), backups, and easy personalization (dark mode, telemetry, etc.).
 
 ### Why this project?
 * Accessible to people without technical knowledge
@@ -31,9 +31,9 @@ A Windows toolkit that gathers the most important settings in one place. It allo
 
 ---
 
-## 💻 Built With
+## Built With
 
-This project was built using:
+💻 This project was built using:
 
 * **[.NET FRAMEWORK]:** [.NET FRAMEWORK 4.8]
 * **[FONT AWESOME]:** [FontAwesome.WPF 4.7.0.9]
@@ -41,9 +41,9 @@ This project was built using:
 
 ---
 
-## ⚙️ Features
+## Features
 
-Key features of the application:
+⚙️ Key features of the application:
 
 - [x] [Feature 1: E.g., Easy backup management]
 - [x] [Feature 2: E.g., Many desirable options gathered in one place]
@@ -51,9 +51,9 @@ Key features of the application:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-Instructions on how to set up the project locally.
+🚀 Instructions on how to set up the project locally.
 
 ### Prerequisites
 
@@ -70,22 +70,25 @@ Before you begin, ensure you have met the following requirements:
    WindowsTOOLKIT.exe
    ```
 
-## 🚧 Project Status
-The project is currently in last phase of development
+## Project Status
+🚧 The project is currently in last phase of development
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are always welcome! If you'd like to improve this project:
+🤝 Contributions are always welcome! If you'd like to improve this project:
 
 1. Fork the repository.
 2. Create a new Branch (`git checkout -b feature/NewFeature`).
 3. Commit your changes (`git commit -m 'Add some NewFeature'`).
 4. Push to the Branch (`git push origin feature/NewFeature`).
 5. Open a Pull Request.
-## 📝 License
-Distributed under the MIT License. See LICENSE for more information.
 
-## 📞 Contact
+
+## License
+📝 Distributed under the MIT License. See LICENSE for more information.
+
+## Contact
+📞 **Contact:**
 Created by: [osprivPL / Michał Ożdżyński]
 
 GitHub: @osprivPL
