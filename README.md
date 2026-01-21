@@ -1,7 +1,7 @@
 # WINDOWS TOOLKIT
 
-!1.0(https://img.shields.io/badge/version-1.0.0-blue)
-!MIT(https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 Easy Windows management toolkit including telemetry, DISM packages, and backups
 
