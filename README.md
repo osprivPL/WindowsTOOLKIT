@@ -86,7 +86,9 @@ Distributed under the MIT License. See LICENSE for more information.
 
 ## 📞 Contact
 Created by: [osprivPL / Michał Ożdżyński]
+
 GitHub: @osprivPL
+
 Email: [michalOzdz@icloud.com]
 
 Project Link: https://github.com/osprivPL/WindowsTOOLKIT
