@@ -74,13 +74,14 @@ Before you begin, ensure you have met the following requirements:
 The project is currently in last phase of development
 
 ## 🤝 Contributing
-  Contributions are always welcome! If you'd like to improve this project:
-    1. Fork the repository.
-    2. Create a new Branch (git checkout -b feature/NewFeature).
-    3. Commit your changes (git commit -m 'Add some NewFeature').
-    4. Push to the Branch (git push origin feature/NewFeature).
-    5. Open a Pull Request.
 
+Contributions are always welcome! If you'd like to improve this project:
+
+1. Fork the repository.
+2. Create a new Branch (`git checkout -b feature/NewFeature`).
+3. Commit your changes (`git commit -m 'Add some NewFeature'`).
+4. Push to the Branch (`git push origin feature/NewFeature`).
+5. Open a Pull Request.
 ## 📝 License
 Distributed under the MIT License. See LICENSE for more information.
 
